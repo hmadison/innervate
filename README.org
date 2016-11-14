@@ -1,0 +1,62 @@
+* Innervate
+
+A development oriented proxy server based off of [[https://devcenter.heroku.com/articles/procfile][procfiles]] and [[https://en.wikipedia.org/wiki/Multicast_DNS][multicast dns]]. Inspired by [[http://pow.cx/][Pow]].
+
+** Usage
+
+Symlink any application that has a procfile (or a config.ru) into the configuration directory.
+
+#+BEGIN_SRC shell
+$ ln -s <project_path> $HOME/.config/innervate/my-app-name 
+#+END_SRC
+
+Navigate to your application
+
+#+BEGIN_SRC shell
+$ open http://my-app-name.localhost/
+#+END_SRC
+
+** Configuration options
+
+Innervate uses system links manage the applications being served. It supports the following flags to 
+configure global behavior. To use these flags, edit Innervate's init script (plist/systemd unit/etc)
+and relaunch the binary via your initd.
+
+*** =-config= 
+
+The location of the configuration directory. Defaults to =$HOME/.config/innervate=.
+
+*** =-port=
+
+The port to run the proxy on. For development purposes, it defaults to =8080= but default installations should 
+set it to =80=.
+
+*** =-restart=
+
+Whether to terminate in a way to have the initd restart Innervate. Defaults to =false= for development, but
+default installations should set it to =true=
+
+*** =-start-port=
+
+The port to start at when assigning ports for hosted services. Defaults to =10000=.
+
+*** =-tld=
+
+The top level domain to use for DNS entries. Per [[https://tools.ietf.org/html/rfc2606][RFC 2606]] this defaults to =localhost=.
+
+** License
+#+BEGIN_SRC text
+Copyright 2016 Hunter Madison
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+#+END_SRC
