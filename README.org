@@ -8,10 +8,7 @@ A development oriented proxy server based off of [[https://devcenter.heroku.com/
 
 1. Install Go and set up your $GOPATH
 2. Clone this repo
-3. =go build= and move the resulting binary to =/usr/local/bin=
-4. Move =__support__/launchd.plist= into =/Library/LaunchDaemons=
-5. Run =chmod chown root:wheel /Library/LaunchDaemons/launchd.plist=
-6. Run =sudo sudo launchctl -w /Library/LaunchDaemons/launchd.plist=
+3. Run =bash __support__/install.sh=
 
 ** Usage
 
