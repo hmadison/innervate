@@ -9,7 +9,6 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"os"
-	"os/user"
 	"strconv"
 	"strings"
 	"sync"
@@ -22,15 +21,9 @@ var tld string
 var restartOnConfigChanges bool
 var wg sync.WaitGroup
 
-func init() {
-	user, err :=  user.Current()
-
-	if err != nil {
-		panic(err)
-	}
-	
+func init() {	
 	flag.IntVar(&proxyPort, "port", 8080, "port to run the proxy server on")
-	flag.StringVar(&configDir, "config", user.HomeDir + "/.config/innervate", "path to the configuration directory")
+	flag.StringVar(&configDir, "config", "/usr/local/etc/innervate", "path to the configuration directory")
 	flag.IntVar(&childStartPort, "start-port", 10000, "port to start running child processes on")
 	flag.StringVar(&tld, "tld", "localhost", "the tld to use")
 	flag.BoolVar(&restartOnConfigChanges, "restart", false, "should the app restart when there is a config change")
