@@ -15,7 +15,7 @@ A development oriented proxy server based off of [[https://devcenter.heroku.com/
 Symlink any application that has a procfile (or a config.ru) into the configuration directory.
 
 #+BEGIN_SRC shell
-$ ln -s <project_path> $HOME/.config/innervate/my-app-name 
+$ ln -s <project_path> /usr/local/etc/innervate/my-app-name
 #+END_SRC
 
 Navigate to your application
